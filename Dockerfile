@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
-ARG repository="deb https://repo.clickhouse.tech/deb/stable/ main/"
-ARG version=21.2.7.11
+ARG repository="deb https://packages.clickhouse.com/deb stable main"
+ARG version=22.11.6.44
 
 RUN apt-get update \
     && apt-get install --yes --no-install-recommends \
@@ -10,7 +10,7 @@ RUN apt-get update \
         dirmngr \
         gnupg \
     && mkdir -p /etc/apt/sources.list.d \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv E0C56BD4 \
+    && apt-key adv --keyserver keyserver.ubuntu.com --recv 3E4AD4719DDE9A38 \
     && echo $repository > /etc/apt/sources.list.d/clickhouse.list \
     && apt-get update \
     && env DEBIAN_FRONTEND=noninteractive \
